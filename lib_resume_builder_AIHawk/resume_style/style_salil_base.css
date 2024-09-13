@@ -1,0 +1,98 @@
+body {
+    font-family: Candara, sans-serif;
+      font-size: 15;
+    line-height: 1.1;
+    color: #000;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.header {
+      font-family: Candara, sans-serif;
+    background-color: #204458;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h1, h2 {
+font-family: Ariel, sans-serif;    
+  color: #306785;
+}
+
+h1 {      		
+      text-align: center;
+    font-size: 15pt;
+      font-weight: bold;
+}
+h2 {
+    font-size: 14pt;
+    border-top: 1.5pt solid #204559;
+    padding-top: 10px;
+      font-weight: bold;
+      text-align: center;
+}
+h3 {
+    font-size: 12pt;
+    padding-top: 1px;
+      font-weight: bold;
+}
+
+.three-column {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.three-column ul {
+  width: 33%;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.title {
+    font-size: 15pt;
+    font-weight: bold;
+      
+}
+.subtitle {
+    font-size: 10pt;
+}
+.contact {
+    text-align: right;
+}
+.highlight {
+    background-color: #D7E7F0;
+    padding: 10px;
+    margin: 10px 0;
+}
+.skills,.achievements {
+      font-size: 15;
+    padding: 10px;
+    margin: 10px 0;
+}
+td:before {
+    content: "• ";
+      padding-left: 10px
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 10px;
+      
+}
+ul li:after {
+    padding-bottom: 5px;
+}
+
+ul li:before {
+    content: "• ";
+}
+
+.early-career {
+    margin-top: 5px;
+}
+.early-career p {
+    margin: 5px 0;
+}
