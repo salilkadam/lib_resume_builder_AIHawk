@@ -187,6 +187,13 @@ class LLMResumer:
                                          {"personal_information": self.resume.personal_information})
         return ""
 
+    def generate_title_block_header(self) -> str:
+        if self.resume.job_description:
+            return self.generate_section(self.strings.prompt_title_block_header,
+                                         {"job_description": self.resume.job_description})
+        return ""
+
+
     def generate_education_section(self) -> str:
         if self.resume.education_details:
             return self.generate_section(self.strings.prompt_education,
@@ -246,6 +253,7 @@ class LLMResumer:
     def generate_html_resume(self) -> str:
         functions = {
             "header": self.generate_header,
+            "title_block": self.generate_title_block_header,
             "education": self.generate_education_section,
             "work_experience": self.generate_work_experience_section,
             "side_projects": self.generate_side_projects_section,
@@ -269,6 +277,7 @@ class LLMResumer:
         full_resume = "<body>\n"
         full_resume += f"  {results.get('header', '')}\n"
         full_resume += "  <main>\n"
+        full_resume += f"    {results.get('title_block', '')}\n"
         full_resume += f"    {results.get('education', '')}\n"
         full_resume += f"    {results.get('work_experience', '')}\n"
         full_resume += f"    {results.get('side_projects', '')}\n"

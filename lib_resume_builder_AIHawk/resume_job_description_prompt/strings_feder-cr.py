@@ -1,5 +1,18 @@
 from lib_resume_builder_AIHawk.template_base import *
 
+prompt_title_block = """
+Act as an HR expert and resume writer specializing in ATS-friendly resumes. Your task is to create a professional and polished header statements for the resume. The header should:
+
+1. **Job Title**: Pull the job title from the job description.
+2. **Job Title Summary**: Create a concise compelling action statement that speaks to the job description.
+3. **Job Alignment Summary**: Create a concise compelling summary of the experience as it aligns with the job description. Summary should not be more than 4 sentences
+
+To implement this:
+- Ensure that the content is ATS friendly but also keyword and action words packed.
+
+- **Job Description:**  
+  {job_description}
+""" + prompt_title_block_template
 
 prompt_header = """
 Act as an HR expert and resume writer specializing in ATS-friendly resumes. Your task is to create a professional and polished header for the resume. The header should:
@@ -34,7 +47,6 @@ To implement this, follow these steps:
   {job_description}
 """+ prompt_education_template
 
-
 prompt_working_experience = """
 Act as an HR expert and resume writer with a specialization in creating ATS-friendly resumes. Your task is to detail the work experience for a resume, ensuring it aligns with the provided job description. For each job entry, ensure you include:
 
@@ -56,7 +68,6 @@ To implement this:
   {job_description}
 """+ prompt_working_experience_template
 
-
 prompt_side_projects = """
 Act as an HR expert and resume writer with a specialization in creating ATS-friendly resumes. Your task is to highlight notable side projects based on the provided job description. For each project, ensure you include:
 
@@ -77,7 +88,6 @@ To implement this:
   {job_description}
 """+ prompt_side_projects_template
 
-
 prompt_achievements = """
 Act as an HR expert and resume writer with a specialization in creating ATS-friendly resumes. Your task is to list significant achievements based on the provided job description. For each achievement, ensure you include:
 
@@ -97,7 +107,6 @@ To implement this:
   {job_description}
 """+ prompt_achievements_template
 
-
 prompt_certifications = """
 Act as an HR expert and resume writer with a specialization in creating ATS-friendly resumes. Your task is to list significant certifications based on the provided details. For each certification, ensure you include:
 
@@ -116,7 +125,6 @@ If any of the certification details (e.g., descriptions) are not provided (i.e.,
 - **Job Description:**  
   {job_description}
 """+ prompt_certifications_template
-
 
 prompt_additional_skills = """
 Act as an HR expert and resume writer with a specialization in creating ATS-friendly resumes. Your task is to list additional skills relevant to the job. For each skill, ensure you include:

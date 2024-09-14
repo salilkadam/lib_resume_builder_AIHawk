@@ -25,6 +25,18 @@ prompt_header_template = """
 The results should be provided in html format, Provide only the html code for the resume, without any explanations or additional text and also without ```html ```
 """
 
+prompt_title_block_template = """
+- **Template to Use**
+```
+<section id="title-block">
+    <h1>[Job Title]</h1>
+    <p><em>[Job Title Summary]</em></p>
+    <p>[Job alignment summary]</p>
+</section>
+```
+The results should be provided in html format, Provide only the html code for the resume, without any explanations or additional text and also without ```html ```"""
+
+
 prompt_education_template = """
 - **Template to Use**
 ```
