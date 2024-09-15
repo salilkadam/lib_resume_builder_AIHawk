@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List, Dict, Any, Optional, Union
 import yaml
-from pydantic import BaseModel, EmailStr, HttpUrl
+from pydantic import BaseModel, EmailStr, HttpUrl, Field
 
 
 
@@ -30,12 +30,12 @@ class EducationDetails(BaseModel):
 
 
 class ExperienceDetails(BaseModel):
-    position: Optional[str]
-    company: Optional[str]
-    employment_period: Optional[str]
-    location: Optional[str]
-    industry: Optional[str]
-    key_responsibilities: Optional[List[Dict[str, str]]] = None
+    position: Optional[str] = None
+    company: Optional[str] = None
+    employment_period: Optional[str] = None
+    location: Optional[str] = None
+    industry: Optional[str] = None
+    key_responsibilities: Optional[List[str]] = Field(default_factory=list)
     skills_acquired: Optional[List[str]] = None
 
 
@@ -52,7 +52,6 @@ class Achievement(BaseModel):
 
 class Certifications(BaseModel):
     name: Optional[str]
-    description: Optional[str]
 
 
 class Language(BaseModel):
@@ -114,6 +113,17 @@ class Resume(BaseModel):
                 for ed in data['education_details']:
                     if 'exam' in ed:
                         ed['exam'] = self.normalize_exam_format(ed['exam'])
+
+           # Normalize key_responsibilities
+            if 'experience_details' in data:
+                for exp in data['experience_details']:
+                    if 'key_responsibilities' in exp:
+                        if isinstance(exp['key_responsibilities'], dict):
+                            exp['key_responsibilities'] = list(exp['key_responsibilities'].values())
+                        elif isinstance(exp['key_responsibilities'], str):
+                            exp['key_responsibilities'] = [exp['key_responsibilities']]
+                        elif not isinstance(exp['key_responsibilities'], list):
+                            raise ValueError(f"Invalid format for key_responsibilities in experience: {exp['position']}")
 
             # Create an instance of Resume from the parsed data
             super().__init__(**data)
